@@ -16,10 +16,13 @@ body {
 }
 
 .container {
+ 
   display: flex;
   width: 80%;
   margin: auto;
 }
+
+
 
 .header {
   height: var(--tamanho-header);
@@ -63,17 +66,25 @@ body {
 /* BANNER */
 
 .banner {
-  height: var(--tamanho-banner);
-  color: white;
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
+  background-repeat: no-repeat;
+  flex-direction: column;
+  height: 100vh;
+  /* width: 600px; */
+  display: flex;
+  background-image: url('public/assets/imgs/CHRISTIAN BACKGROUND.png');
+  align-items: center;
   background-size: cover;
+  justify-content: center;
+  position: relative;
+  margin-top: 0px;
 }
-
+/* 
 .banner .container {
   justify-content: center;
   align-items: center;
   height: 100%;
-}
+  background-color: #fff;
+} */
 
 .banner .container p {
   width: 50%;
@@ -121,7 +132,7 @@ body {
 /* FOOTER */
 
 .footer {
-  background-color: #32b9cd;
+  background-color: #e4a24dda;
   height: 150px;
   color: #fff;
   display: flex;
