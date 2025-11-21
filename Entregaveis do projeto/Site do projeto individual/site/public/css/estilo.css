@@ -184,6 +184,11 @@ body {
   font-size: 30px;
 }
 
+.card-cadastro {
+  
+    height: fit-content;
+}
+
 .formulario {
   display: flex;
   height: 90%;
