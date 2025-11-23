@@ -57,3 +57,16 @@ CREATE TABLE comentario (
     FOREIGN KEY (Usuario_idUsuario) REFERENCES Usuario(idUsuario),
     FOREIGN KEY (testemunho_idtestemunho) REFERENCES testemunho(idtestemunho)
 );
+
+CREATE TABLE ResultadoQuiz (
+    idResultadoQuiz INT PRIMARY KEY AUTO_INCREMENT,
+    fkUsuario INT,
+    livro VARCHAR(100),
+    paginas INT,
+    dias INT,
+    perguntasRespondidas VARCHAR(255),
+    pontuacaoTotal INT,
+    dataRegistro DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (fkUsuario) REFERENCES Usuario(idUsuario)
+);
+

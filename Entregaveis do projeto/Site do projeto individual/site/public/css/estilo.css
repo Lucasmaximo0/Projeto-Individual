@@ -477,3 +477,59 @@ input {
     font-size: 13px;
     color: #6b7280;
 }
+
+.simulador-bg {
+  height: var(--tamanho-login);
+  background-image: url('../assets/imgs/Jesus no jardin.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;   
+  align-items: center;       
+}
+
+
+.simulador-bg .card {
+  width: 35%;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: palevioletred;
+  flex-direction: column;
+  padding: 20px 0;
+}
+
+
+.simulador-bg .formulario input {
+  border: 2px solid #32b9cd;
+  text-align: center;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+
+.simulador-bg .botao {
+  background-color: #fde7b7;
+  color: black;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  width: 150px;
+}
+
+.simulador-bg .botao:hover {
+  background-color: #e7ca91;
+}
+
+/* Resultado */
+#resultado_simulador {
+  margin-top: 15px;
+  padding: 15px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  color: black;
+  font-size: 16px;
+}
