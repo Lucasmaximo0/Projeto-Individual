@@ -10,32 +10,41 @@ require("dotenv").config({ path: caminho_env });
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
-var PORTA_APP = process.env.APP_PORT;
-var HOST_APP = process.env.APP_HOST;
-var quizRouter = require("./src/routes/quiz");
-app.use("/quiz", quizRouter);
-
-
 var app = express();
+
 
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
+var quizRouter = require("./src/routes/quizRoutes");
+
+var PORTA_APP = process.env.APP_PORT;
+var HOST_APP = process.env.APP_HOST;
+
+
+/*var indexRouter = require("./src/routes/index");
+var usuarioRouter = require("./src/routes/usuarios");
+var avisosRouter = require("./src/routes/avisos");
+var medidasRouter = require("./src/routes/medidas");
+var quizRouter = require("./src/routes/quizRoutes");
 // var aquariosRouter = require("./src/routes/aquarios");
-// var empresasRouter = require("./src/routes/empresas");
+// var empresasRouter = require("./src/routes/empresas");*/
 
 app.use("/quiz", quizRouter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
-
 app.use(cors());
 
 app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
+app.use("/quiz", quizRouter);
+
+var PORTA_APP = process.env.APP_PORT;
+var HOST_APP = process.env.APP_HOST;
 // app.use("/aquarios", aquariosRouter);
 // app.use("/empresas", empresasRouter);
 
