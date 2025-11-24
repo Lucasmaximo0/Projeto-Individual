@@ -1,100 +1,109 @@
 
+var perguntas = [
+    "Escolha um livro que interesse!",
+    "Escolha uma música que mais te agrada:",
+    "Qual desses versículos mais chama sua atenção?",
+    "Há quanto tempo você conhece Jesus?",
+    "Você é cristão?"
+];
 
 
-var numeroPergunta = 1;
+var alternativas = [
+    ["Bíblia Sagrada", "Hoje é Um Bom Dia Para Viver Milagre", "Bom Dia, Espírito Santo"],
+    ["Escolho Deus", "Me Ama", "Tudo é Teu"],
+    ["Provérbios 17:22", "Hebreus 11:1", "João 3:16"],
+    ["De 1 a 10 anos", "De 10 a 20 anos", "De 20 a 30 anos", "Mais de 40 anos"],
+    ["Sim", "Não"]
+];
+
+
+var pontosPerguntas = [
+    [30, 20, 25],
+    [25, 20, 30],
+    [20, 25, 30],
+    [10, 20, 30, 40],
+    [20, 0]
+];
+
+
+var indice = 0;
+var respostas = [];
 var pontos = 0;
 
-
 var pergunta = document.getElementById("pergunta");
-var alternativas = document.getElementById("alternativas");
+var alternativas_el = document.getElementById("alternativas");
 var progresso = document.getElementById("progress");
 var resultadoBox = document.getElementById("resultadoBox");
 var resultadoTitulo = document.getElementById("resultadoTitulo");
 var resultadoTexto = document.getElementById("resultadoTexto");
 
-mostrarPergunta1();
 
+function iniciar() {
+    indice = 0;
+    respostas = [];
+    pontos = 0;
 
-function mostrarPergunta1() {
-    pergunta.innerHTML = "Escolha um livro que interesse!";
-    progresso.innerHTML = "Pergunta 1 de 5";
-
-    alternativas.innerHTML = `
-        <label class="alternativa"><input type="radio" name="q" value="30"> Bíblia Sagrada</label>
-        <label class="alternativa"><input type="radio" name="q" value="20"> Hoje é Um Bom Dia Para Viver Milagre</label>
-        <label class="alternativa"><input type="radio" name="q" value="25"> Bom Dia, Espírito Santo</label>
-    `;
+    resultadoBox.style.display = "none";
+    mostrarPergunta();
 }
 
-// Função 
-function mostrarPergunta2() {
-    pergunta.innerHTML = "Escolha uma música que mais te agrada:";
-    progresso.innerHTML = "Pergunta 2 de 5";
 
-    alternativas.innerHTML = `
-        <label class="alternativa"><input type="radio" name="q" value="25"> Escolho Deus</label>
-        <label class="alternativa"><input type="radio" name="q" value="20"> Me Ama</label>
-        <label class="alternativa"><input type="radio" name="q" value="30"> Tudo é Teu</label>
-    `;
+function mostrarPergunta() {
+    pergunta.innerHTML = perguntas[indice];
+    progresso.innerHTML = "Pergunta " + (indice + 1) + " de 5";
+
+    alternativas_el.innerHTML = "";
+
+    for (var i = 0; i < alternativas[indice].length; i++) {
+        alternativas_el.innerHTML += `
+            <label class="alternativa">
+                <input type="radio" name="resp" value="${i}">
+                ${alternativas[indice][i]}
+            </label>
+        `;
+    }
+
+    btnNext.innerHTML = indice == perguntas.length - 1 ? "Finalizar" : "Próxima";
 }
 
-// Função 
-function mostrarPergunta3() {
-    pergunta.innerHTML = "Qual desses versículos mais chama sua atenção?";
-    progresso.innerHTML = "Pergunta 3 de 5";
 
-    alternativas.innerHTML = `
-        <label class="alternativa"><input type="radio" name="q" value="20"> Provérbios 17:22</label>
-        <label class="alternativa"><input type="radio" name="q" value="25"> Hebreus 11:1</label>
-        <label class="alternativa"><input type="radio" name="q" value="30"> João 3:16</label>
-    `;
-}
+btnNext.addEventListener("click", function () {
 
-// Função 
-function mostrarPergunta4() {
-    pergunta.innerHTML = "Há quanto tempo você conhece Jesus?";
-    progresso.innerHTML = "Pergunta 4 de 5";
+    var marcada = document.querySelector("input[name='resp']:checked");
 
-    alternativas.innerHTML = `
-        <label class="alternativa"><input type="radio" name="q" value="10"> De 1 a 10 anos</label>
-        <label class="alternativa"><input type="radio" name="q" value="20"> De 10 a 20 anos</label>
-        <label class="alternativa"><input type="radio" name="q" value="30"> De 20 a 30 anos</label>
-        <label class="alternativa"><input type="radio" name="q" value="40"> Mais de 40 anos</label>
-    `;
-}
-
-// Função 
-function mostrarPergunta5() {
-    pergunta.innerHTML = "Você é cristão?";
-    progresso.innerHTML = "Pergunta 5 de 5";
-
-    alternativas.innerHTML = `
-        <label class="alternativa"><input type="radio" name="q" value="20"> Sim</label>
-        <label class="alternativa"><input type="radio" name="q" value="0"> Não</label>
-    `;
-}
-
-// Botão 
-document.getElementById("btnNext").addEventListener("click", function () {
-    var selecionada = document.querySelector("input[name='q']:checked");
-
-    if (!selecionada) {
+    if (!marcada) {
         alert("Escolha uma opção!");
         return;
     }
 
-    pontos += Number(selecionada.value);
-    numeroPergunta++;
+    respostas[indice] = Number(marcada.value);
 
-    if (numeroPergunta == 2) mostrarPergunta2();
-    else if (numeroPergunta == 3) mostrarPergunta3();
-    else if (numeroPergunta == 4) mostrarPergunta4();
-    else if (numeroPergunta == 5) mostrarPergunta5();
-    else finalizar();
+    if (indice < perguntas.length - 1) {
+        indice++;
+        mostrarPergunta();
+    } else {
+        finalizar();
+    }
 });
 
+// Botão anterior
+btnPrev.addEventListener("click", function () {
+    if (indice > 0) {
+        indice--;
+        mostrarPergunta();
+    }
+});
 
+// Finalizar Quiz
 function finalizar() {
+
+    pontos = 0;
+
+    for (var i = 0; i < respostas.length; i++) {
+        var r = respostas[i];
+        pontos += pontosPerguntas[i][r];
+    }
+
     var mensagem = "";
 
     if (pontos <= 40) {
@@ -110,9 +119,42 @@ function finalizar() {
 
     resultadoBox.style.display = "block";
 
-  
     pergunta.innerHTML = "";
-    alternativas.innerHTML = "";
+    alternativas_el.innerHTML = "";
     progresso.innerHTML = "";
+
+    salvarResultado();
 }
+
+// configurar no back
+function salvarResultado() {
+
+    var idUsuario = sessionStorage.ID_USUARIO;
+
+    fetch("/quiz/salvar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            usuario: idUsuario,
+            respostas: respostas.toString(), 
+            total: pontos
+        })
+    })
+    .then(function(resposta) {
+        if (resposta.ok) {
+            console.log("Resultado salvo no banco!");
+        } else {
+            console.log("Erro ao salvar resultado.");
+        }
+    })
+    .catch(function (erro) {
+        console.log("Erro no fetch:", erro);
+    });
+}
+
+
+iniciar();
+
 

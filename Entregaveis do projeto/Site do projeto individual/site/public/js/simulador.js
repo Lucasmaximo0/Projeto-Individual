@@ -30,7 +30,7 @@ function simular() {
             <p><strong>Dias desejados:</strong> ${dias}</p>
             <p><strong>Você precisa ler aproximadamente:</strong> ${paginasPorDia.toFixed(1)} páginas por dia.</p>
             <br>
-            <p>Que Deus abençoe sua leitura! 🙏📖</p>
+            <p>Que Deus abençoe sua leitura!</p>
         `;
     }
 }
