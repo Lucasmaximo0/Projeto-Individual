@@ -124,6 +124,7 @@ function finalizar() {
     progresso.innerHTML = "";
 
     salvarResultado();
+    window.location.href='../dashboard/dashboard.html'
 }
 
 // configurar no back
