@@ -321,6 +321,40 @@ input {
   height: 50px;
   width: 50px;
 }
+/* DASHBOARD DO QUIZ*/
+
+.dashboard-quiz-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #eeeeee;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  color: #d63384
+
+}
+
+.dashboard-quiz-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 26px;
+    color: palevioletred;
+    font-weight: bold;
+}
+
+.area-graficos {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+canvas {
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+
 
 /* SIMULADOR */
 
@@ -532,4 +566,65 @@ input {
   border-radius: 8px;
   color: black;
   font-size: 16px;
+}
+
+/*dash simples*/
+.dashboard-bg {
+  background-image: url('../assets/imgs/Jesus no jardin.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 40px 0;
+  min-height: 100vh;
+}
+
+.dashboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.dashboard-card {
+  width: 60%;
+  background-color: #e5e5e5;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cards-infos {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+}
+
+.info-card {
+  background-color: white;
+  padding: 15px 25px;
+  border-radius: 10px;
+  text-align: center;
+  width: 45%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.info-card p {
+  font-size: 16px;
+  margin: 0;
+  color: #444;
+}
+
+.info-card h3 {
+  margin: 10px 0 0 0;
+  color: #d63384;
+}
+
+canvas {
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100% !important;
+  max-height: 280px;
 }

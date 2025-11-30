@@ -8,6 +8,10 @@ body {
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.simulador-bg {
+  background-color: black;
+}
+
 .label-captura {
   display: flex;
   justify-content: center;

@@ -7,44 +7,62 @@
     <title>Caminho da Fé | Dashboard</title>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="../css/dashboards.css">
-
-    <script src="./js/dashboardQuiz.js" defer></script>
+    <link rel="stylesheet" href="../css/estilo.css">
+    <script src="../js/dashboardQuiz.js" defer></script>
 </head>
 
 <body>
 
-   
     <div class="header">
         <div class="container">
             <h1 class="titulo">Caminho da Fé</h1>
             <ul class="navbar">
-                <li><a href="./index.html">Inicial</a></li>
-                <li><a href="./simulador.html">Simulador</a></li>
-                <li><a href="./quiz.html">Quiz</a></li>
+                <li><a href="../index.html">Inicial</a></li>
+                <li><a href="../simulador.html">Simulador</a></li>
+                <li><a href="../quiz.html">Quiz</a></li>
                 <li class="agora">Dashboard</li>
                 <li>|</li>
-                <li><a href="./login.html">Login</a></li>
+                <li><a href="../login.html">Login</a></li>
             </ul>
         </div>
     </div>
 
-    
-    <div class="simulador-bg">
-        <div class="container">
-            <div class="card" style="width: 60%; padding: 20px;">
+    <!-- CONTEÚDO -->
+    <div class="dashboard-bg">
+        <div class="dashboard-container">
+            
+            <div class="dashboard-card">
 
-                <h2 style="text-align: center;">Dashboard do Quiz</h2>
+                <h2>Dashboard do Quiz</h2>
 
-                <canvas id="graficoPontuacoes" style="margin-top: 20px;"></canvas>
+                <!-- CARDS DE INFORMAÇÃO -->
+                <div class="cards-infos">
 
-                <canvas id="graficoEvolucao" style="margin-top: 40px;"></canvas>
+                    <div class="info-card">
+                        <p>Total de Pontos</p>
+                        <h3 id="card_pontos">0</h3>
+                    </div>
+
+                    <div class="info-card">
+                        <p>Quantidade de Tentativas</p>
+                        <h3 id="card_tentativas">0</h3>
+                    </div>
+
+                </div>
+
+                
+                <h3>Gráfico de Pontuação</h3>
+                <canvas id="graficoPontuacoes"></canvas>
+
+               
+                <h3 style="margin-top: 40px;">Evolução das Tentativas</h3>
+                <canvas id="graficoEvolucao"></canvas>
 
             </div>
+
         </div>
     </div>
 
- 
     <div class="footer">
         <div class="container">
             <span class="version">v1.0.0</span>
