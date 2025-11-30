@@ -17,7 +17,7 @@ var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
-var quizRouter = require("./src/routes/quizRoutes");
+var quizRouter = require("./src/routes/quiz");
 
 var PORTA_APP = process.env.APP_PORT;
 var HOST_APP = process.env.APP_HOST;
@@ -31,7 +31,7 @@ var quizRouter = require("./src/routes/quizRoutes");
 // var aquariosRouter = require("./src/routes/aquarios");
 // var empresasRouter = require("./src/routes/empresas");*/
 
-app.use("/quiz", quizRouter);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));

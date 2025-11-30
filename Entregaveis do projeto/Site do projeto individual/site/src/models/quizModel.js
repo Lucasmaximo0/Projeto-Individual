@@ -1,10 +1,10 @@
 var database = require("../database/config");
 
-function salvar(usuario, respostas, total) {
+function salvar(usuario, total) {
 
     var instrucao = `
-        INSERT INTO ResultadoQuiz (fkUsuario, perguntasRespondidas, pontuacaoTotal)
-        VALUES ('${usuario}', '${respostas}', '${total}');
+        INSERT INTO ResultadoQuiz (fkUsuario, pontuacaoTotal)
+        VALUES ('${usuario}', '${total}');
     `;
 
     return database.executar(instrucao);
@@ -15,8 +15,7 @@ function estatisticas() {
     var instrucao = `
         SELECT pontuacaoTotal, dataRegistro
         FROM ResultadoQuiz
-        ORDER BY dataRegistro DESC
-        LIMIT 20;
+        ORDER BY dataRegistro ASC;
     `;
 
     return database.executar(instrucao);

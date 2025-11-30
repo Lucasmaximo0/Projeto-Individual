@@ -3,18 +3,33 @@ fetch("/quiz/estatisticas")
         return resposta.json();
     })
     .then(function (dados) {
+        console.log("Dados recebidos:", dados);
+
+        
+
+        if (!dados || dados.length === 0) {
+            console.log("Nenhum dado encontrado.");
+            return;
+        }
 
         var labels = [];
         var valores = [];
 
         for (var i = 0; i < dados.length; i++) {
-            labels.push(dados[i].dataRegistro);
+            labels.push("Tentativa " + (i + 1));
             valores.push(dados[i].pontuacaoTotal);
         }
 
-        // GRÁFICO DE BARRA
-        const ctx1 = document.getElementById("graficoPontuacoes");
+        // atualizar os cards
+        var totalPontos = dados[dados.length - 1].pontuacaoTotal;
+        var totalTentativas = dados.length;
 
+        document.getElementById("card_pontos").innerHTML = totalPontos;
+        document.getElementById("card_tentativas").innerHTML = totalTentativas;
+
+        /*Grafico de barra*/
+        var ctx1 = document.getElementById("graficoPontuacoes");
+        
         new Chart(ctx1, {
             type: "bar",
             data: {

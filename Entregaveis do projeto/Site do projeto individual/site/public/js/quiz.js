@@ -125,6 +125,7 @@ function finalizar() {
 
     salvarResultado();
     window.location.href='../dashboard/dashboard.html'
+    
 }
 
 // configurar no back
@@ -133,22 +134,24 @@ function salvarResultado() {
     var idUsuario = sessionStorage.ID_USUARIO;
 
     fetch("/quiz/salvar", {
+        
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
             usuario: idUsuario,
-            respostas: respostas.toString(), 
+            respostas: respostas, 
             total: pontos
         })
     })
     .then(function(resposta) {
+        console.log("Chamando api pelo front")
         if (resposta.ok) {
-            console.log("Resultado salvo no banco!");
         } else {
             console.log("Erro ao salvar resultado.");
         }
+        return resposta
     })
     .catch(function (erro) {
         console.log("Erro no fetch:", erro);

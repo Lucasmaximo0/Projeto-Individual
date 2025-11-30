@@ -1,10 +1,10 @@
 var quizModel = require("../models/quizModel");
 
 function salvar(req, res) {
-
+    console.log("CHEGUEI NA FUNÇÃO SALVAR")
     var usuario = req.body.usuario;
-    var respostas = req.body.respostas;
     var total = req.body.total;
+    var respostas= req.body.respostas;
 
     if (usuario == undefined) {
         res.status(400).send("O id do usuário está undefined!");
@@ -17,7 +17,7 @@ function salvar(req, res) {
     }
     else {
 
-        quizModel.salvar(usuario, respostas, total)
+        quizModel.salvar(usuario, total)
             .then(function (resultado) {
                 res.json(resultado);
             })

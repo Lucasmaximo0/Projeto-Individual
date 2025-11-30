@@ -59,14 +59,14 @@ CREATE TABLE comentario (
 );
 
 CREATE TABLE ResultadoQuiz (
-    idResultadoQuiz INT PRIMARY KEY AUTO_INCREMENT,
-    fkUsuario INT,
-    livro VARCHAR(100),
-    paginas INT,
-    dias INT,
-    perguntasRespondidas VARCHAR(255),
-    pontuacaoTotal INT,
+    idResultadoQuiz INT AUTO_INCREMENT PRIMARY KEY,
+    fkUsuario INT NOT NULL,
+    pontuacaoTotal INT NOT NULL,
     dataRegistro DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (fkUsuario) REFERENCES Usuario(idUsuario)
 );
+
+
+
+
 
