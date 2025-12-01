@@ -1,5 +1,5 @@
 function simular() {
-
+// função, variael, função matemática, condição
     var livro = input_livro.value;
     var paginas = Number(input_paginas.value);
     var dias = Number(input_dias.value);
