@@ -10,63 +10,47 @@ CREATE TABLE Usuario (
     dataCadastro datetime default current_timestamp
 );
 
-CREATE TABLE testemunho (
-    idtestemunho INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(500) NOT null,
-    conteudo TEXT not null,
-    dataPuplicacao datetime default current_timestamp,
-    Usuario_idUsuario INT not null,
-    FOREIGN KEY (Usuario_idUsuario) REFERENCES Usuario(idUsuario)
-);
-
-CREATE TABLE Musica (
-    idMusica INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(45) not null,
-    compositor VARCHAR(45),
-    link VARCHAR(200) not null,
-    dataCadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
-    Usuario_idUsuario INT not null,
-    FOREIGN KEY (Usuario_idUsuario) REFERENCES Usuario(idUsuario)
-);
-
-CREATE TABLE livros (
-    idlivros INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(60) not null,
-    autor VARCHAR(45) not null,
-    ISBN VARCHAR(45),
-    dataCadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
-    Usuario_idUsuario INT,
-    FOREIGN KEY (Usuario_idUsuario) REFERENCES Usuario(idUsuario)
-);
-
-CREATE TABLE Estudo (
-    idEstudo INT AUTO_INCREMENT PRIMARY KEY,
-    titulo VARCHAR(45)not null,
-    conteudo TEXT not null,
-    dataCadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
-    Usuario_idUsuario INT not null,
-    FOREIGN KEY (Usuario_idUsuario) REFERENCES Usuario(idUsuario)
-);
-
-CREATE TABLE comentario (
-    idcomentario INT AUTO_INCREMENT PRIMARY KEY,
-    conteudo TEXT not null,
-    dataComentario DATETIME DEFAULT CURRENT_TIMESTAMP,
-    Usuario_idUsuario INT not null,
-    testemunho_idtestemunho INT not null,
-    FOREIGN KEY (Usuario_idUsuario) REFERENCES Usuario(idUsuario),
-    FOREIGN KEY (testemunho_idtestemunho) REFERENCES testemunho(idtestemunho)
-);
 
 CREATE TABLE ResultadoQuiz (
-    idResultadoQuiz INT PRIMARY KEY AUTO_INCREMENT,
-    fkUsuario INT,
-    livro VARCHAR(100),
-    paginas INT,
-    dias INT,
-    perguntasRespondidas VARCHAR(255),
-    pontuacaoTotal INT,
+    idResultadoQuiz INT AUTO_INCREMENT PRIMARY KEY,
+    fkUsuario INT NOT NULL,
+    pontuacaoTotal INT NOT NULL,
     dataRegistro DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (fkUsuario) REFERENCES Usuario(idUsuario)
 );
+
+INSERT INTO Usuario (nome, email, senha)
+VALUES 
+('Lucas Santos', 'lucas@example.com', '123456'),
+('Maria Silva', 'maria@gmail.com', 'senha123'),
+('João Pereira', 'joao@outlook.com', 'abc123'),
+('Ana Costa', 'ana.costa@gmail.com', 'senha456');
+
+INSERT INTO ResultadoQuiz (fkUsuario, pontuacaoTotal)
+VALUES
+(1, 60),
+(1, 75),
+(1, 90);
+
+INSERT INTO ResultadoQuiz (fkUsuario, pontuacaoTotal)
+VALUES
+(2, 45),
+(2, 80);
+
+SELECT pontuacaoTotal, dataRegistro
+FROM ResultadoQuiz
+WHERE fkUsuario = 1;
+
+SELECT 
+    Usuario.nome,
+    ResultadoQuiz.pontuacaoTotal,
+    ResultadoQuiz.dataRegistro
+FROM Usuario
+JOIN ResultadoQuiz
+    ON Usuario.idUsuario = ResultadoQuiz.fkUsuario;
+
+
+select * from usuario;
+select * from ResultadoQuiz;
+
 
